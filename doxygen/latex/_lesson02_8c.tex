@@ -1,0 +1,244 @@
+\hypertarget{_lesson02_8c}{\section{C\-:/src/\-Open\-G\-L/\-Lesson02/\-Lesson02.c File Reference}
+\label{_lesson02_8c}\index{C\-:/src/\-Open\-G\-L/\-Lesson02/\-Lesson02.\-c@{C\-:/src/\-Open\-G\-L/\-Lesson02/\-Lesson02.\-c}}
+}
+
+
+Ouvre une simple fenêtre Windows et dessine un triangle muticolore en rotation avec Open\-G\-L.  
+
+
+{\ttfamily \#include $<$windows.\-h$>$}\\*
+{\ttfamily \#include $<$gl\textbackslash{}gl.\-h$>$}\\*
+{\ttfamily \#include $<$gl\textbackslash{}glu.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}resource.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+L\-R\-E\-S\-U\-L\-T C\-A\-L\-L\-B\-A\-C\-K \hyperlink{_lesson02_8c_a9135ea2a0d6fce68ba3b858226a31a4f}{Wnd\-Proc} (H\-W\-N\-D, U\-I\-N\-T, W\-P\-A\-R\-A\-M, L\-P\-A\-R\-A\-M)
+\item 
+G\-Lvoid \hyperlink{_lesson02_8c_a87bb84d489df61ed7b0c002584fd984f}{Re\-Size\-G\-L\-Scene} (G\-Lsizei width, G\-Lsizei height)
+\begin{DoxyCompactList}\small\item\em Fonction Re\-Size\-G\-L\-Scene \-: redimensionnement de la fenêtre Windows gérant Open\-G\-L. \end{DoxyCompactList}\item 
+int \hyperlink{_lesson02_8c_aa4c387d3f1ebce6d57684b6a10c9b0ae}{Init\-G\-L} (G\-Lvoid)
+\begin{DoxyCompactList}\small\item\em Fonction Init\-G\-L \-: Fin de l'initialisation de la fenêtre Windows gérant Open\-G\-L. \end{DoxyCompactList}\item 
+int \hyperlink{_lesson02_8c_a52061247bdaeb770e3a1d59eefaad972}{Draw\-G\-L\-Scene} (G\-Lvoid)
+\begin{DoxyCompactList}\small\item\em Fonction Draw\-G\-L\-Scene \-: Dessin sous Open\-G\-L dans la fenêtre Windows. \end{DoxyCompactList}\item 
+G\-Lvoid \hyperlink{_lesson02_8c_af33a2273205c1491be5916d3091658e0}{Kill\-G\-L\-Window} (G\-Lvoid)
+\begin{DoxyCompactList}\small\item\em Fonction Kill\-G\-L\-Window \-: Destruction de toutes les ressources du programme. \end{DoxyCompactList}\item 
+B\-O\-O\-L \hyperlink{_lesson02_8c_ae5f043c9df9b9e5e0e26d567feeeb1bc}{Create\-G\-L\-Window} (char $\ast$title, int width, int height, int bits, B\-O\-O\-L fullscreenflag)
+\begin{DoxyCompactList}\small\item\em Fonction Create\-G\-L\-Window \-: création de la fenêtre Windows gérant Open\-G\-L. \end{DoxyCompactList}\item 
+int W\-I\-N\-A\-P\-I \hyperlink{_lesson02_8c_a661c2abc03926acfaeb93b4ae7db4943}{Win\-Main} (H\-I\-N\-S\-T\-A\-N\-C\-E \hyperlink{_lesson02_8c_a74029128723095e7bf00a71d46af8b24}{h\-Instance}, H\-I\-N\-S\-T\-A\-N\-C\-E h\-Prev\-Instance, L\-P\-S\-T\-R lp\-Cmd\-Line, int n\-Cmd\-Show)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+H\-D\-C \hyperlink{_lesson02_8c_a78f6446a0e13adc7b7b2f239112ac785}{h\-D\-C} =N\-U\-L\-L
+\item 
+H\-G\-L\-R\-C \hyperlink{_lesson02_8c_a874963259c7cd998acfe6e187fbdb4c1}{h\-R\-C} =N\-U\-L\-L
+\item 
+H\-W\-N\-D \hyperlink{_lesson02_8c_afec4341c234519e145bac6f0e5edaa51}{h\-Wnd} =N\-U\-L\-L
+\item 
+H\-I\-N\-S\-T\-A\-N\-C\-E \hyperlink{_lesson02_8c_a74029128723095e7bf00a71d46af8b24}{h\-Instance}
+\item 
+B\-O\-O\-L \hyperlink{_lesson02_8c_a55a8351b704275ad12988864918abb2a}{keys} \mbox{[}256\mbox{]}
+\item 
+B\-O\-O\-L \hyperlink{_lesson02_8c_a22389371583c4b8843e06da43399d6d9}{active} =T\-R\-U\-E
+\item 
+B\-O\-O\-L \hyperlink{_lesson02_8c_ab15a33c0173f2c5b6ac806c55cf7f0ba}{fullscreen} =T\-R\-U\-E
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Ouvre une simple fenêtre Windows et dessine un triangle muticolore en rotation avec Open\-G\-L. \begin{DoxyVerb}      Comments manageable by Doxygen
+\end{DoxyVerb}
+
+
+Modified smoothly by Thierry D\-E\-C\-H\-A\-I\-Z\-E
+
+Paradigm \-: obtain one source (only one !) compatible for multiple free C Compilers and provide for all users an development environment on Windows (64 bits compatible), the great Code\-::\-Blocks manager (version 12.\-11), and don't use glaux.\-lib or glaux.\-dll.
+
+a) Mingw 32 and 64 bits \-: downloadable \href{http://sourceforge.net/projects/mingw/}{\tt http\-://sourceforge.\-net/projects/mingw/} b) Mingw 32 and 64 bits \-: included in packages Orwell in replacement of old Dev-\/\-Cpp \href{http://sourceforge.net/projects/orwelldevcpp/}{\tt http\-://sourceforge.\-net/projects/orwelldevcpp/} (two installations in different place) c) Mingw 32 \-: included in package Code\-::\-Blocks (version 12.\-11) \href{http://sourceforge.net/projects/codeblocks/files/Binaries/12.11/Windows/}{\tt http\-://sourceforge.\-net/projects/codeblocks/files/\-Binaries/12.\-11/\-Windows/} d) Borland C \-: downloadable \href{http://edn.embarcadero.com/article/20633}{\tt http\-://edn.\-embarcadero.\-com/article/20633} e) Digital Mars Compiler C \-: version 8.\-56 downloadable \href{http://www.digitalmars.com}{\tt http\-://www.\-digitalmars.\-com} f) Open\-Watcom \-: version 1.\-9 downloadable \href{http://openwatcom.mirror.fr/}{\tt http\-://openwatcom.\-mirror.\-fr/} g) Lcc and Lcc64 \-: downloadable \href{http://www.cs.virginia.edu/~lcc-win32/}{\tt http\-://www.\-cs.\-virginia.\-edu/$\sim$lcc-\/win32/} h) Cygwin \-: downloadable \href{http://www.cygwin.com/install.html}{\tt http\-://www.\-cygwin.\-com/install.\-html} (setup.\-exe) i) and Visual Studio 2005 \-: express edition for free (my version 2005 is full not express) \href{http://www.microsoft.com/france/visual-studio/essayez/express.aspx}{\tt http\-://www.\-microsoft.\-com/france/visual-\/studio/essayez/express.\-aspx}
+
+Important remark \-: All install in C partition, \char`\"{}no space\char`\"{} and \char`\"{}no special characters\char`\"{} in the name of directories (it's reason to not install in C\-: Files (x86) ... by default proposed on windows 64 bits)
+
+Add resource file end resource header for restitute version + icon Open\-G\-L.\-ico for fun because versionning is important, same for freeware \-:-\/) !
+
+Date \-: 2013/05/11
+
+\begin{DoxyAuthor}{Author}
+Jeff Molofee ( Ne\-He ) originely, Modified for L\-C\-C\-Win32 compiler by Robert Wishlaw 2002/11/23 
+
+After adapted by Thierry Dechaize to verify paradigm \-: one source for multiple C Compilers 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0.\-1.\-2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+12 May 2013
+\end{DoxyDate}
+Ce programme ne gére que deux événements \-: le clic sur le bouton \char`\"{}\-Fermé\char`\"{} de la fenêtre ou la sortie par la touche E\-S\-C. 
+
+\subsection{Function Documentation}
+\hypertarget{_lesson02_8c_ae5f043c9df9b9e5e0e26d567feeeb1bc}{\index{Lesson02.\-c@{Lesson02.\-c}!Create\-G\-L\-Window@{Create\-G\-L\-Window}}
+\index{Create\-G\-L\-Window@{Create\-G\-L\-Window}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{Create\-G\-L\-Window}]{\setlength{\rightskip}{0pt plus 5cm}B\-O\-O\-L Create\-G\-L\-Window (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{title, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{int}]{bits, }
+\item[{B\-O\-O\-L}]{fullscreenflag}
+\end{DoxyParamCaption}
+)}}\label{_lesson02_8c_ae5f043c9df9b9e5e0e26d567feeeb1bc}
+
+
+Fonction Create\-G\-L\-Window \-: création de la fenêtre Windows gérant Open\-G\-L. 
+
+\begin{DoxyVerb}            This Code Creates Our OpenGL Window.
+\end{DoxyVerb}
+
+
+Création de la classe Windows, de la fenêtre principale et des contextes (Device Context et Open\-G\-L Rendering Context) Parameters Are\-: $\ast$ 
+\begin{DoxyParams}{Parameters}
+{\em title} & Title To Appear At The Top Of The Window $\ast$ \\
+\hline
+{\em width} & Width Of The G\-L Window Or Fullscreen Mode $\ast$ \\
+\hline
+{\em height} & Height Of The G\-L Window Or Fullscreen Mode $\ast$ \\
+\hline
+{\em bits} & Number Of Bits To Use For Color (8/16/24/32) $\ast$ \\
+\hline
+{\em fullscreenflag} & Use Fullscreen Mode (T\-R\-U\-E) Or Windowed Mode (F\-A\-L\-S\-E) $\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un {\itshape Booleen} restituant le statut de la bonne création de la fenêtre Open\-G\-L. 
+\end{DoxyReturn}
+\hypertarget{_lesson02_8c_a52061247bdaeb770e3a1d59eefaad972}{\index{Lesson02.\-c@{Lesson02.\-c}!Draw\-G\-L\-Scene@{Draw\-G\-L\-Scene}}
+\index{Draw\-G\-L\-Scene@{Draw\-G\-L\-Scene}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{Draw\-G\-L\-Scene}]{\setlength{\rightskip}{0pt plus 5cm}int Draw\-G\-L\-Scene (
+\begin{DoxyParamCaption}
+\item[{G\-Lvoid}]{}
+\end{DoxyParamCaption}
+)}}\label{_lesson02_8c_a52061247bdaeb770e3a1d59eefaad972}
+
+
+Fonction Draw\-G\-L\-Scene \-: Dessin sous Open\-G\-L dans la fenêtre Windows. 
+
+\begin{DoxyVerb}            This Code draw the scene OpenGL in the main window.
+\end{DoxyVerb}
+
+
+Rien 
+\begin{DoxyParams}{Parameters}
+{\em nothing} & un void Open\-G\-L. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_lesson02_8c_aa4c387d3f1ebce6d57684b6a10c9b0ae}{\index{Lesson02.\-c@{Lesson02.\-c}!Init\-G\-L@{Init\-G\-L}}
+\index{Init\-G\-L@{Init\-G\-L}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{Init\-G\-L}]{\setlength{\rightskip}{0pt plus 5cm}int Init\-G\-L (
+\begin{DoxyParamCaption}
+\item[{G\-Lvoid}]{}
+\end{DoxyParamCaption}
+)}}\label{_lesson02_8c_aa4c387d3f1ebce6d57684b6a10c9b0ae}
+
+
+Fonction Init\-G\-L \-: Fin de l'initialisation de la fenêtre Windows gérant Open\-G\-L. 
+
+\begin{DoxyVerb}            This Code finish the initialization OpenGL of the main window.
+\end{DoxyVerb}
+
+
+Rien 
+\begin{DoxyParams}{Parameters}
+{\em nothing} & un void Open\-G\-L. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_lesson02_8c_af33a2273205c1491be5916d3091658e0}{\index{Lesson02.\-c@{Lesson02.\-c}!Kill\-G\-L\-Window@{Kill\-G\-L\-Window}}
+\index{Kill\-G\-L\-Window@{Kill\-G\-L\-Window}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{Kill\-G\-L\-Window}]{\setlength{\rightskip}{0pt plus 5cm}G\-Lvoid Kill\-G\-L\-Window (
+\begin{DoxyParamCaption}
+\item[{G\-Lvoid}]{}
+\end{DoxyParamCaption}
+)}}\label{_lesson02_8c_af33a2273205c1491be5916d3091658e0}
+
+
+Fonction Kill\-G\-L\-Window \-: Destruction de toutes les ressources du programme. 
+
+\begin{DoxyVerb}            This Code destroy all resources of this program.
+\end{DoxyVerb}
+
+
+Rien 
+\begin{DoxyParams}{Parameters}
+{\em nothing} & un void Open\-G\-L. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_lesson02_8c_a87bb84d489df61ed7b0c002584fd984f}{\index{Lesson02.\-c@{Lesson02.\-c}!Re\-Size\-G\-L\-Scene@{Re\-Size\-G\-L\-Scene}}
+\index{Re\-Size\-G\-L\-Scene@{Re\-Size\-G\-L\-Scene}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{Re\-Size\-G\-L\-Scene}]{\setlength{\rightskip}{0pt plus 5cm}G\-Lvoid Re\-Size\-G\-L\-Scene (
+\begin{DoxyParamCaption}
+\item[{G\-Lsizei}]{width, }
+\item[{G\-Lsizei}]{height}
+\end{DoxyParamCaption}
+)}}\label{_lesson02_8c_a87bb84d489df61ed7b0c002584fd984f}
+
+
+Fonction Re\-Size\-G\-L\-Scene \-: redimensionnement de la fenêtre Windows gérant Open\-G\-L. 
+
+\begin{DoxyVerb}            This Code Resize the main window.
+\end{DoxyVerb}
+
+
+En entrée les deux nouvelles dimensions de la fenêtre 
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the G\-L Window Or Fullscreen Mode $\ast$ \\
+\hline
+{\em height} & Height of the G\-L Window Or Fullscreen Mode $\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Aucun un void Open\-G\-L. 
+\end{DoxyReturn}
+\hypertarget{_lesson02_8c_a661c2abc03926acfaeb93b4ae7db4943}{\index{Lesson02.\-c@{Lesson02.\-c}!Win\-Main@{Win\-Main}}
+\index{Win\-Main@{Win\-Main}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{Win\-Main}]{\setlength{\rightskip}{0pt plus 5cm}int W\-I\-N\-A\-P\-I Win\-Main (
+\begin{DoxyParamCaption}
+\item[{H\-I\-N\-S\-T\-A\-N\-C\-E}]{h\-Instance, }
+\item[{H\-I\-N\-S\-T\-A\-N\-C\-E}]{h\-Prev\-Instance, }
+\item[{L\-P\-S\-T\-R}]{lp\-Cmd\-Line, }
+\item[{int}]{n\-Cmd\-Show}
+\end{DoxyParamCaption}
+)}}\label{_lesson02_8c_a661c2abc03926acfaeb93b4ae7db4943}
+\hypertarget{_lesson02_8c_a9135ea2a0d6fce68ba3b858226a31a4f}{\index{Lesson02.\-c@{Lesson02.\-c}!Wnd\-Proc@{Wnd\-Proc}}
+\index{Wnd\-Proc@{Wnd\-Proc}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{Wnd\-Proc}]{\setlength{\rightskip}{0pt plus 5cm}L\-R\-E\-S\-U\-L\-T C\-A\-L\-L\-B\-A\-C\-K Wnd\-Proc (
+\begin{DoxyParamCaption}
+\item[{H\-W\-N\-D}]{h\-Wnd, }
+\item[{U\-I\-N\-T}]{u\-Msg, }
+\item[{W\-P\-A\-R\-A\-M}]{w\-Param, }
+\item[{L\-P\-A\-R\-A\-M}]{l\-Param}
+\end{DoxyParamCaption}
+)}}\label{_lesson02_8c_a9135ea2a0d6fce68ba3b858226a31a4f}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_lesson02_8c_a22389371583c4b8843e06da43399d6d9}{\index{Lesson02.\-c@{Lesson02.\-c}!active@{active}}
+\index{active@{active}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{active}]{\setlength{\rightskip}{0pt plus 5cm}B\-O\-O\-L active =T\-R\-U\-E}}\label{_lesson02_8c_a22389371583c4b8843e06da43399d6d9}
+\hypertarget{_lesson02_8c_ab15a33c0173f2c5b6ac806c55cf7f0ba}{\index{Lesson02.\-c@{Lesson02.\-c}!fullscreen@{fullscreen}}
+\index{fullscreen@{fullscreen}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{fullscreen}]{\setlength{\rightskip}{0pt plus 5cm}B\-O\-O\-L fullscreen =T\-R\-U\-E}}\label{_lesson02_8c_ab15a33c0173f2c5b6ac806c55cf7f0ba}
+\hypertarget{_lesson02_8c_a78f6446a0e13adc7b7b2f239112ac785}{\index{Lesson02.\-c@{Lesson02.\-c}!h\-D\-C@{h\-D\-C}}
+\index{h\-D\-C@{h\-D\-C}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{h\-D\-C}]{\setlength{\rightskip}{0pt plus 5cm}H\-D\-C h\-D\-C =N\-U\-L\-L}}\label{_lesson02_8c_a78f6446a0e13adc7b7b2f239112ac785}
+\hypertarget{_lesson02_8c_a74029128723095e7bf00a71d46af8b24}{\index{Lesson02.\-c@{Lesson02.\-c}!h\-Instance@{h\-Instance}}
+\index{h\-Instance@{h\-Instance}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{h\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}H\-I\-N\-S\-T\-A\-N\-C\-E h\-Instance}}\label{_lesson02_8c_a74029128723095e7bf00a71d46af8b24}
+\hypertarget{_lesson02_8c_a874963259c7cd998acfe6e187fbdb4c1}{\index{Lesson02.\-c@{Lesson02.\-c}!h\-R\-C@{h\-R\-C}}
+\index{h\-R\-C@{h\-R\-C}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{h\-R\-C}]{\setlength{\rightskip}{0pt plus 5cm}H\-G\-L\-R\-C h\-R\-C =N\-U\-L\-L}}\label{_lesson02_8c_a874963259c7cd998acfe6e187fbdb4c1}
+\hypertarget{_lesson02_8c_afec4341c234519e145bac6f0e5edaa51}{\index{Lesson02.\-c@{Lesson02.\-c}!h\-Wnd@{h\-Wnd}}
+\index{h\-Wnd@{h\-Wnd}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{h\-Wnd}]{\setlength{\rightskip}{0pt plus 5cm}H\-W\-N\-D h\-Wnd =N\-U\-L\-L}}\label{_lesson02_8c_afec4341c234519e145bac6f0e5edaa51}
+\hypertarget{_lesson02_8c_a55a8351b704275ad12988864918abb2a}{\index{Lesson02.\-c@{Lesson02.\-c}!keys@{keys}}
+\index{keys@{keys}!Lesson02.c@{Lesson02.\-c}}
+\subsubsection[{keys}]{\setlength{\rightskip}{0pt plus 5cm}B\-O\-O\-L keys\mbox{[}256\mbox{]}}}\label{_lesson02_8c_a55a8351b704275ad12988864918abb2a}

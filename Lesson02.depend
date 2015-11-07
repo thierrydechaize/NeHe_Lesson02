@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1293530711 source:c:\src\lesson01\lesson01.c
+	<windows.h>
+	<gl/gl.h>
+
+1038089592 source:c:\src\opengl\lesson02\lesson02.c
+	<windows.h>
+	<gl\gl.h>
+	<gl\glu.h>
+	<gl\glaux.h>
+
+1368371858 source:c:\src\opengl\lesson02\lesson02.rc
+	<windows.h>
+	<winver.h>
+	"resource.h"
+
+1368373287 c:\src\opengl\lesson02\resource.h
+
