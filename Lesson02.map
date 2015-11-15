@@ -1,7 +1,7 @@
 
  Start         Length     Name                   Class
- 0002:00000000 000081E0H  _TEXT                  CODE 32-bit
- 0002:000081E0 000001C2H  ICODE                  ICODE 32-bit
+ 0002:00000000 000082F0H  _TEXT                  CODE 32-bit
+ 0002:000082F0 000001C8H  ICODE                  ICODE 32-bit
  0003:00000000 00000004H  .CRT$XIA               DATA 32-bit
  0003:00000010 00000004H  .CRT$XIZ               DATA 32-bit
  0003:00000020 00000004H  .CRT$XCA               DATA 32-bit

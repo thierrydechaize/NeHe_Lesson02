@@ -30,21 +30,26 @@ COPYRIGHT AND DISCLAIMER: (c)2000 Jeff Molofee
 
  Modified smoothly by Thierry DECHAIZE
 
-  Paradigm : obtain one source (only one !) compatible for multiple free C Compilers
+Paradigm : obtain one source (only one !) compatible for multiple free C Compilers
     and provide for all users an development environment on Windows (64 bits compatible),
     the great Code::Blocks manager (version 12.11), and don't use glaux.lib or glaux.dll.
 
-    a) Mingw 32 and 64 bits : downloadable http://sourceforge.net/projects/mingw/
-    b) Mingw 32 and 64 bits : included in packages Orwell in replacement of old Dev-Cpp http://sourceforge.net/projects/orwelldevcpp/ (two installations in different place)
-    c) Mingw 32 : included in package Code::Blocks (version 12.11) http://sourceforge.net/projects/codeblocks/files/Binaries/12.11/Windows/
-    d) Borland C : downloadable  http://edn.embarcadero.com/article/20633
-    e) Digital Mars Compiler C : version 8.56 downloadable http://www.digitalmars.com
-    f) OpenWatcom : version 1.9 downloadable http://openwatcom.mirror.fr/
-    g) Lcc and Lcc64 : downloadable http://www.cs.virginia.edu/~lcc-win32/
-    h) Cygwin : downloadable http://www.cygwin.com/install.html (setup.exe)
-    i) and Visual Studio 2005 : express edition for free (my version 2005 is full not express) http://www.microsoft.com/france/visual-studio/essayez/express.aspx
+      a) Mingw 32 and 64 bits : downloadable http://sourceforge.net/projects/mingw/
+      b) Mingw 32 DEV-CPP  : included in old Dev-Cpp http://sourceforge.net/projects/devcpp/
+      c) Mingw 32 CB : included in package Code::Blocks (version 12.11) http://sourceforge.net/projects/codeblocks/files/Binaries/12.11/Windows/
+     d) Borland C : downloadable  http://edn.embarcadero.com/article/20633
+     e) Digital Mars Compiler C : version 8.57 downloadable http://www.digitalmars.com
+     f) OpenWatcom : version 1.9 downloadable http://openwatcom.mirror.fr/    Version 2.0 64bits seems very buggy !!!
+     g) Lcc and Lcc64 : downloadable http://www.cs.virginia.edu/~lcc-win32/
+     h) Cygwin : downloadable http://www.cygwin.com/install.html (setup.exe)
+      i) Visual Studio 2005 + 64bits: express edition for free (my version 2005 is full not express) http://www.microsoft.com/france/visual-studio/essayez/express.aspx
+       j) TDM GCC 64 bits : downloadable on http://sourceforge.net/projects/TDM-GCC
 
-Important remark : All install in C partition, "no space" and "no special characters" in the name of directories]]>
+  Important remark : All install in C partition, "no space" and "no special characters" in the name of directories
+            (it's reason to not install in C:\Program Files (x86) ... by default proposed on windows 64 bits)
+
+    Add resource file end resource header for restitute version + icon OpenGL.ico for fun
+  because versionning is important, same for freeware :-) !]]>
 			</notes>
 		</Option>
 		<Build>
@@ -93,7 +98,7 @@ Important remark : All install in C partition, "no space" and "no special charac
 				<Option output="binMingW32/Debug/Lesson02" prefix_auto="1" extension_auto="1" />
 				<Option object_output="objMingW32/Debug/" />
 				<Option type="0" />
-				<Option compiler="gnu_gcc_compiler_mingw32_official_version_4521" />
+				<Option compiler="gnu_gcc_compiler_mingw32_official_version_481" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -112,7 +117,48 @@ Important remark : All install in C partition, "no space" and "no special charac
 				<Option output="binMingW32/Release/Lesson02" prefix_auto="1" extension_auto="1" />
 				<Option object_output="objMingW32/Release/" />
 				<Option type="0" />
-				<Option compiler="gnu_gcc_compiler_mingw32_official_version_4521" />
+				<Option compiler="gnu_gcc_compiler_mingw32_official_version_481" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="libglaux" />
+					<Add library="libglu32" />
+					<Add library="libopengl32" />
+					<Add library="libadvapi32" />
+					<Add library="libcomdlg32" />
+					<Add library="libgdi32" />
+					<Add library="libwinmm" />
+				</Linker>
+			</Target>
+			<Target title="Debug Mingw32 Dev-Cpp">
+				<Option platforms="Windows;" />
+				<Option output="binDevCpp/Debug/Lesson02" prefix_auto="1" extension_auto="1" />
+				<Option object_output="objDevCpp/Debug/" />
+				<Option type="0" />
+				<Option compiler="gnu_gcc_compiler_mingw32_devcpp_version_441" />
+				<Option projectCompilerOptionsRelation="0" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="libglaux" />
+					<Add library="libglu32" />
+					<Add library="libopengl32" />
+					<Add library="libadvapi32" />
+					<Add library="libcomdlg32" />
+					<Add library="libgdi32" />
+					<Add library="libwinmm" />
+				</Linker>
+			</Target>
+			<Target title="Release Mingw32 Dev-Cpp">
+				<Option platforms="Windows;" />
+				<Option output="binDevCpp/Release/Lesson02" prefix_auto="1" extension_auto="1" />
+				<Option object_output="objDevCpp/Release/" />
+				<Option type="0" />
+				<Option compiler="gnu_gcc_compiler_mingw32_devcpp_version_441" />
+				<Option projectCompilerOptionsRelation="0" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>
@@ -164,50 +210,6 @@ Important remark : All install in C partition, "no space" and "no special charac
 					<Add library="winmm" />
 				</Linker>
 			</Target>
-			<Target title="Debug Open WATCOM">
-				<Option platforms="Windows;" />
-				<Option output="binOpenWATCOM/Debug/Lesson02" prefix_auto="1" extension_auto="1" />
-				<Option object_output="objOpenWATCOM/Debug" />
-				<Option type="0" />
-				<Option compiler="ow" />
-				<Option projectCompilerOptionsRelation="0" />
-				<Compiler>
-					<Add option="-d2" />
-					<Add option="-bcl=nt" />
-					<Add option="-H" />
-					<Add option="-D" />
-					<Add option="-g" />
-				</Compiler>
-				<Linker>
-					<Add library="glaux" />
-					<Add library="glu32" />
-					<Add library="opengl32" />
-					<Add library="advapi32" />
-					<Add library="comdlg32" />
-					<Add library="gdi32" />
-					<Add library="winmm" />
-				</Linker>
-			</Target>
-			<Target title="Release Open WATCOM">
-				<Option platforms="Windows;" />
-				<Option output="binOpenWATCOM/Release/Lesson02" prefix_auto="1" extension_auto="1" />
-				<Option object_output="objOpenWATCOM/Release/" />
-				<Option type="0" />
-				<Option compiler="ow" />
-				<Option projectCompilerOptionsRelation="0" />
-				<Compiler>
-					<Add option="-bcl=nt" />
-				</Compiler>
-				<Linker>
-					<Add library="glaux" />
-					<Add library="glu32" />
-					<Add library="opengl32" />
-					<Add library="advapi32" />
-					<Add library="comdlg32" />
-					<Add library="gdi32" />
-					<Add library="winmm" />
-				</Linker>
-			</Target>
 			<Target title="Debug CYGWIN">
 				<Option platforms="Windows;" />
 				<Option output="binCYGWIN/Debug/Lesson02" prefix_auto="1" extension_auto="1" />
@@ -237,52 +239,53 @@ Important remark : All install in C partition, "no space" and "no special charac
 					<Add option="-march=core2" />
 				</Compiler>
 				<Linker>
-					<Add option="-mwindows -e _mainCRTStartup" />
+					<Add option="-mwindows" />
 					<Add library="glut32" />
 					<Add library="glu32" />
 					<Add library="opengl32" />
 				</Linker>
 			</Target>
-			<Target title="Debug Mingw32 Dev-Cpp">
+			<Target title="Debug lcc">
 				<Option platforms="Windows;" />
-				<Option output="binDevCpp/Debug/Lesson02" prefix_auto="1" extension_auto="1" />
-				<Option object_output="objDevCpp/Debug/" />
+				<Option output="binllc/Debug/Lesson02" prefix_auto="1" extension_auto="1" />
+				<Option object_output="objllc/Debug" />
 				<Option type="0" />
-				<Option compiler="gnu_gcc_compiler_mingw32_devcpp_version_441" />
-				<Option projectCompilerOptionsRelation="0" />
+				<Option compiler="lcc" />
 				<Compiler>
-					<Add option="-g" />
+					<Add option="-g2" />
 				</Compiler>
 				<Linker>
-					<Add library="libglaux" />
-					<Add library="libglu32" />
-					<Add library="libopengl32" />
-					<Add library="libadvapi32" />
-					<Add library="libcomdlg32" />
-					<Add library="libgdi32" />
-					<Add library="libwinmm" />
+					<Add library="glaux" />
+					<Add library="glu32" />
+					<Add library="opengl32" />
+					<Add library="advapi32" />
+					<Add library="comdlg32" />
+					<Add library="gdi32" />
+					<Add library="winmm" />
 				</Linker>
+				<ExtraCommands>
+					<Add before="lrc.exe -IC:\lcc\include -foobjllc\Debug\Lesson02.res  Lesson02.rc" />
+				</ExtraCommands>
 			</Target>
-			<Target title="Release Mingw32 Dev-Cpp">
+			<Target title="Release lcc">
 				<Option platforms="Windows;" />
-				<Option output="binDevCpp/Release/Lesson02" prefix_auto="1" extension_auto="1" />
-				<Option object_output="objDevCpp/Release/" />
+				<Option output="binllc/Release/Lesson02" prefix_auto="1" extension_auto="1" />
+				<Option object_output="objllc/Release/" />
 				<Option type="0" />
-				<Option compiler="gnu_gcc_compiler_mingw32_devcpp_version_441" />
+				<Option compiler="lcc" />
 				<Option projectCompilerOptionsRelation="0" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
 				<Linker>
-					<Add option="-s" />
-					<Add library="libglaux" />
-					<Add library="libglu32" />
-					<Add library="libopengl32" />
-					<Add library="libadvapi32" />
-					<Add library="libcomdlg32" />
-					<Add library="libgdi32" />
-					<Add library="libwinmm" />
+					<Add library="glaux" />
+					<Add library="glu32" />
+					<Add library="opengl32" />
+					<Add library="advapi32" />
+					<Add library="comdlg32" />
+					<Add library="gdi32" />
+					<Add library="winmm" />
 				</Linker>
+				<ExtraCommands>
+					<Add before="lrc.exe -IC:\lcc\include -foobjllc\Release\Lesson02.res  Lesson02.rc" />
+				</ExtraCommands>
 			</Target>
 			<Target title="Debug lcc64">
 				<Option platforms="Windows;" />
@@ -464,48 +467,6 @@ Important remark : All install in C partition, "no space" and "no special charac
 					<Add library="import32" />
 				</Linker>
 			</Target>
-			<Target title="Debug lcc">
-				<Option platforms="Windows;" />
-				<Option output="binllc/Debug/Lesson02" prefix_auto="1" extension_auto="1" />
-				<Option object_output="objllc/Debug" />
-				<Option type="0" />
-				<Option compiler="lcc" />
-				<Compiler>
-					<Add option="-g2" />
-				</Compiler>
-				<Linker>
-					<Add library="glaux" />
-					<Add library="glu32" />
-					<Add library="opengl32" />
-					<Add library="advapi32" />
-					<Add library="comdlg32" />
-					<Add library="gdi32" />
-					<Add library="winmm" />
-				</Linker>
-				<ExtraCommands>
-					<Add before="lrc.exe -IC:\lcc\include -foobjllc\Debug\Lesson02.res  Lesson02.rc" />
-				</ExtraCommands>
-			</Target>
-			<Target title="Release lcc">
-				<Option platforms="Windows;" />
-				<Option output="binllc/Release/Lesson02" prefix_auto="1" extension_auto="1" />
-				<Option object_output="objllc/Release/" />
-				<Option type="0" />
-				<Option compiler="lcc" />
-				<Option projectCompilerOptionsRelation="0" />
-				<Linker>
-					<Add library="glaux" />
-					<Add library="glu32" />
-					<Add library="opengl32" />
-					<Add library="advapi32" />
-					<Add library="comdlg32" />
-					<Add library="gdi32" />
-					<Add library="winmm" />
-				</Linker>
-				<ExtraCommands>
-					<Add before="lrc.exe -IC:\lcc\include -foobjllc\Release\Lesson02.res  Lesson02.rc" />
-				</ExtraCommands>
-			</Target>
 			<Target title="Debug Mingw64">
 				<Option platforms="Windows;" />
 				<Option output="binMingW64/Debug/Lesson02" prefix_auto="1" extension_auto="1" />
@@ -545,9 +506,95 @@ Important remark : All install in C partition, "no space" and "no special charac
 					<Add library="libwinmm" />
 				</Linker>
 			</Target>
+			<Target title="Debug TDM MinGW64">
+				<Option platforms="Windows;" />
+				<Option output="binTDMW64/Debug/Lesson02" prefix_auto="1" extension_auto="1" />
+				<Option object_output="objTDMW64/Debug" />
+				<Option type="0" />
+				<Option compiler="gnu_gcc_compiler_tdm_mingw64" />
+				<Compiler>
+					<Add option="-march=core2" />
+					<Add option="-g" />
+					<Add option="-std=c99" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add library="libglu32" />
+					<Add library="libopengl32" />
+					<Add library="libadvapi32" />
+					<Add library="libcomdlg32" />
+					<Add library="libgdi32" />
+					<Add library="libwinmm" />
+				</Linker>
+			</Target>
+			<Target title="Release TDM MinGW64">
+				<Option platforms="Windows;" />
+				<Option output="binTDMW64/Release/Lesson02" prefix_auto="1" extension_auto="1" />
+				<Option object_output="objTDMW64/Release" />
+				<Option type="0" />
+				<Option compiler="gnu_gcc_compiler_tdm_mingw64" />
+				<Compiler>
+					<Add option="-march=core2" />
+					<Add option="-O2" />
+					<Add option="-std=c99" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="libglu32" />
+					<Add library="libopengl32" />
+					<Add library="libadvapi32" />
+					<Add library="libcomdlg32" />
+					<Add library="libgdi32" />
+					<Add library="libwinmm" />
+				</Linker>
+			</Target>
+			<Target title="Release Open WATCOM">
+				<Option platforms="Windows;" />
+				<Option output="binOpenWATCOM/Release/Lesson02" prefix_auto="1" extension_auto="1" />
+				<Option object_output="objOpenWATCOM/Release/" />
+				<Option type="0" />
+				<Option compiler="ow" />
+				<Option projectCompilerOptionsRelation="0" />
+				<Compiler>
+					<Add option="-bcl=nt" />
+				</Compiler>
+				<Linker>
+					<Add library="glaux" />
+					<Add library="glu32" />
+					<Add library="opengl32" />
+					<Add library="advapi32" />
+					<Add library="comdlg32" />
+					<Add library="gdi32" />
+					<Add library="winmm" />
+				</Linker>
+			</Target>
+			<Target title="Debug Open WATCOM">
+				<Option platforms="Windows;" />
+				<Option output="binOpenWATCOM/Debug/Lesson02" prefix_auto="1" extension_auto="1" />
+				<Option object_output="objOpenWATCOM/Debug" />
+				<Option type="0" />
+				<Option compiler="ow" />
+				<Option projectCompilerOptionsRelation="0" />
+				<Compiler>
+					<Add option="-d2" />
+					<Add option="-bcl=nt" />
+					<Add option="-H" />
+					<Add option="-D" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="glaux" />
+					<Add library="glu32" />
+					<Add library="opengl32" />
+					<Add library="advapi32" />
+					<Add library="comdlg32" />
+					<Add library="gdi32" />
+					<Add library="winmm" />
+				</Linker>
+			</Target>
 		</Build>
 		<VirtualTargets>
-			<Add alias="All build" targets="Debug Mingw32 CB;Release Mingw32 CB;Debug Mingw32 official;Release Mingw32 official;Debug DMC;Release DMC;Debug Open WATCOM;Release Open WATCOM;Debug CYGWIN;Release CYGWIN;Debug Mingw32 Dev-Cpp;Release Mingw32 Dev-Cpp;Debug lcc64;Release lcc64;Debug VS2005;Release VS2005;Debug BorlandC;Release BorlandC;Debug lcc;Release lcc;Debug Mingw64;Release Mingw64;" />
+			<Add alias="All build" targets="Debug Mingw32 CB;Release Mingw32 CB;Debug Mingw32 official;Release Mingw32 official;Debug Mingw32 Dev-Cpp;Release Mingw32 Dev-Cpp;Debug DMC;Release DMC;Debug CYGWIN;Release CYGWIN;Debug lcc;Release lcc;Debug lcc64;Release lcc64;Debug VS2005;Release VS2005;Debug VS2005 X64;Release VS2005 X64;Debug BorlandC;Release BorlandC;Debug Mingw64;Release Mingw64;Debug TDM MinGW64;Release TDM MinGW64;Release Open WATCOM;Debug Open WATCOM;" />
 		</VirtualTargets>
 		<Unit filename="Lesson02.c">
 			<Option compilerVar="CC" />

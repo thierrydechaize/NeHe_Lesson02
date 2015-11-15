@@ -16,14 +16,15 @@
 *    the great Code::Blocks manager (version 12.11), and don't use glaux.lib or glaux.dll.
 *
 *	 a) Mingw 32 and 64 bits : downloadable http://sourceforge.net/projects/mingw/
-*    b) Mingw 32 and 64 bits : included in packages Orwell in replacement of old Dev-Cpp http://sourceforge.net/projects/orwelldevcpp/ (two installations in different place)
-*    c) Mingw 32 : included in package Code::Blocks (version 12.11) http://sourceforge.net/projects/codeblocks/files/Binaries/12.11/Windows/
+*    b) Mingw 32 DEV-CPP  : included in old Dev-Cpp http://sourceforge.net/projects/devcpp/
+*    c) Mingw 32 CB : included in package Code::Blocks (version 12.11) http://sourceforge.net/projects/codeblocks/files/Binaries/12.11/Windows/
 *    d) Borland C : downloadable  http://edn.embarcadero.com/article/20633
-*    e) Digital Mars Compiler C : version 8.56 downloadable http://www.digitalmars.com
-*    f) OpenWatcom : version 1.9 downloadable http://openwatcom.mirror.fr/
+*    e) Digital Mars Compiler C : version 8.57 downloadable http://www.digitalmars.com
+*    f) OpenWatcom : version 1.9 downloadable http://openwatcom.mirror.fr/    Version 2.0 64bits seems very buggy !!!
 *	 g) Lcc and Lcc64 : downloadable http://www.cs.virginia.edu/~lcc-win32/
 *	 h) Cygwin : downloadable http://www.cygwin.com/install.html (setup.exe)
-*	 i) and Visual Studio 2005 : express edition for free (my version 2005 is full not express) http://www.microsoft.com/france/visual-studio/essayez/express.aspx
+*	 i) Visual Studio 2005 + 64bits: express edition for free (my version 2005 is full not express) http://www.microsoft.com/france/visual-studio/essayez/express.aspx
+*    j) TDM GCC 64 bits : downloadable on http://sourceforge.net/projects/TDM-GCC
 *
 *  Important remark : All install in C partition, "no space" and "no special characters" in the name of directories
 *            (it's reason to not install in C:\Program Files (x86) ... by default proposed on windows 64 bits)
@@ -44,10 +45,16 @@
 *
 */
 
-#ifdef __CYGWIN__
+#if defined __CYGWIN__ || defined __LCC__
 #define WIN32_LEAN_AND_MEAN
 #endif
+
 #include <windows.h>		// Header File For Windows
+#if defined(__LCC__)
+#ifndef WINGDIAPI
+#   define WINGDIAPI __stdcall
+#endif
+#endif
 #include <gl\gl.h>			// Header File For The OpenGL32 Library
 #include <gl\glu.h>			// Header File For The GLu32 Library
 /* #include <gl\glaux.h>		// Header File For The Glaux Library */
