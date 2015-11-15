@@ -39,7 +39,7 @@
 * \author          After adapted by Thierry Dechaize to verify paradigm : one source for multiple C Compilers
 * \version         1.0.1.2
 * \date            12 May 2013
-* \brief           Ouvre une simple fenêtre Windows et dessine un triangle muticolore en rotation avec OpenGL.
+* \brief           Ouvre une simple fenêtre Windows et dessine deux formes avec OpenGL : un triangle et un carré.
 * \details         Ce programme ne gére que deux événements : le clic sur le bouton "Fermé" de la fenêtre ou la sortie par la touche ESC.
 *
 *
